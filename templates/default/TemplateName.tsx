@@ -1,4 +1,4 @@
-import styles from './TemplateName.scss';
+import styles from './TemplateName.module.scss';
 
 interface TemplateNameProps { }
 
