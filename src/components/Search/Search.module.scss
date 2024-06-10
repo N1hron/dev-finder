@@ -1,12 +1,9 @@
 :global {
     body[data-theme="dark"] {
-        --search-color: var(--gray-400);
         --input-text-color: var(--gray-50);
-        --shadow: none;
     }
 
     body[data-theme="light"] {
-        --search-color: var(--white);
         --input-text-color: var(--gray-100);
     }
 }
@@ -14,8 +11,9 @@
 .search {
     margin-top: 2rem;
     padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-    background-color: var(--search-color);
-    border-radius: 0.7rem;
+    border-radius: 1rem;
+
+    background-color: var(--bg-color-secondary);
     box-shadow: var(--shadow);
     
     display: flex;
@@ -38,12 +36,13 @@
         font-size: 1rem;
         border: none;
         background-color: inherit;
-        color: var(--input-text-color);
         padding: 0.56em 0;
+        
+        color: var(--input-text-color);
 
         &:focus {
             outline: none;
-            border-bottom: 0.15rem solid var(--main-color);
+            border-bottom: 0.15rem solid var(--accent-color);
             margin-bottom: -0.15rem;
         }
     }

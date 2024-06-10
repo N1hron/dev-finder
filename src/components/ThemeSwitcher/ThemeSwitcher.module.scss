@@ -1,11 +1,9 @@
 :global {
     body[data-theme='dark'] {
-        --switcher-color: var(--white);
-        --switcher-color-hover: var(--gray-100);
+        --switcher-color-hover: var(--gray-200);
     }
     
     body[data-theme='light'] {
-        --switcher-color: var(--gray-100);
         --switcher-color-hover: var(--gray-300);
     }
 }
@@ -15,7 +13,7 @@
         width: 1.25rem;
         height: 1.25rem;
         
-        fill: var(--switcher-color);
+        fill: var(--icon-color);
         transition: var(--transition-duration-color) fill;
     }
 
@@ -32,11 +30,12 @@
         align-items: center;
         gap: 0.9rem;
 
-        color: var(--switcher-color);
+        color: var(--text-color-secondary);
         transition: var(--transition-duration-color) color;
     }
 
     &:hover {
-        --switcher-color: var(--switcher-color-hover);
+        --text-color-secondary: var(--switcher-color-hover);
+        --icon-color: var(--switcher-color-hover);
     }
 }
