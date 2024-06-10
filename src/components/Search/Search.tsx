@@ -1,4 +1,4 @@
-import { FormEvent, MouseEvent } from 'react';
+import { FormEvent, MouseEvent, Dispatch } from 'react';
 
 import { Button } from 'components/Button';
 import { ReactComponent as SearchIcon } from 'assets/icon-search.svg';
@@ -6,7 +6,8 @@ import { ReactComponent as SearchIcon } from 'assets/icon-search.svg';
 import styles from './Search.module.scss';
 
 interface SearchProps {
-    searchError: boolean;
+    isNotFound: boolean;
+    setIsNotFound: Dispatch<React.SetStateAction<boolean>>;
     onSubmit: (username: string) => void;
 }
 
@@ -14,13 +15,11 @@ interface FormFields {
     username: HTMLInputElement;
 }
 
-export const Search = ({ searchError, onSubmit }: SearchProps) => {
+export const Search = ({ isNotFound, setIsNotFound, onSubmit }: SearchProps) => {
     function handleSubmit(event: FormEvent<HTMLFormElement & FormFields>) {
         event.preventDefault();
 
         const username = event.currentTarget.username.value;
-
-        console.log(username);
 
         if (username) {
             onSubmit(username);
@@ -54,8 +53,9 @@ export const Search = ({ searchError, onSubmit }: SearchProps) => {
                 type="text"
                 placeholder="Search GitHub username"
                 name="username"
+                onChange={event => isNotFound && event.target.value && setIsNotFound(false)}
             />
-            {searchError && (
+            {isNotFound && (
                 <p data-no-focus className={styles.errorMessage}>
                     No results
                 </p>
