@@ -14,4 +14,8 @@
     &:hover {
         background-color: var(--accent-color-hover);
     }
+
+    &:disabled {
+        background-color: var(--gray-100);
+    }
 }

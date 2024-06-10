@@ -1,9 +1,9 @@
-import { ButtonHTMLAttributes, MouseEventHandler } from 'react';
+import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 
 import styles from './Button.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    children: string;
+    children: ReactNode;
     onClick?: MouseEventHandler<HTMLButtonElement>
 }
 

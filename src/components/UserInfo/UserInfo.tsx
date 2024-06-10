@@ -9,10 +9,11 @@ import { SocialInfo } from './SocialInfo/SocialInfo';
 import styles from './UserInfo.module.scss';
 
 interface UserInfoProps {
-    user: User;
+    user: User | null;
 }
 
 export const UserInfo = ({ user }: UserInfoProps) => {
+    if (!user) return null;
     return (
         <article className={styles.userInfo}>
             <Avatar

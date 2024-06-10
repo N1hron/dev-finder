@@ -6,8 +6,8 @@ import { ReactComponent as SearchIcon } from 'assets/icon-search.svg';
 import styles from './Search.module.scss';
 
 interface SearchProps {
-    isNotFound: boolean;
-    setIsNotFound: Dispatch<React.SetStateAction<boolean>>;
+    isLoading: boolean;
+    errorMessage: string;
     onSubmit: (username: string) => void;
 }
 
@@ -15,7 +15,7 @@ interface FormFields {
     username: HTMLInputElement;
 }
 
-export const Search = ({ isNotFound, setIsNotFound, onSubmit }: SearchProps) => {
+export const Search = ({ isLoading, errorMessage, onSubmit }: SearchProps) => {
     function handleSubmit(event: FormEvent<HTMLFormElement & FormFields>) {
         event.preventDefault();
 
@@ -40,10 +40,10 @@ export const Search = ({ isNotFound, setIsNotFound, onSubmit }: SearchProps) => 
 
     return (
         <form
-            autoComplete="off"
             className={styles.search}
             onSubmit={handleSubmit}
             onClick={handleClick}
+            autoComplete="off"
         >
             <label htmlFor="search">
                 <SearchIcon title="Search" />
@@ -53,14 +53,15 @@ export const Search = ({ isNotFound, setIsNotFound, onSubmit }: SearchProps) => 
                 type="text"
                 placeholder="Search GitHub username"
                 name="username"
-                onChange={event => isNotFound && event.target.value && setIsNotFound(false)}
             />
-            {isNotFound && (
+            {errorMessage && (
                 <p data-no-focus className={styles.errorMessage}>
-                    No results
+                    {errorMessage}
                 </p>
             )}
-            <Button data-no-focus>Search</Button>
+            <Button disabled={isLoading} data-no-focus>
+                Search
+            </Button>
         </form>
     );
 };
